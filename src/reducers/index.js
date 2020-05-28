@@ -3,8 +3,6 @@ import {
     GET_FILM_SUCCESS,
     GET_FILM_FAIL
 } from '../actions'
-
-
 // initial state
 const initialState = {
     film: [],
@@ -15,14 +13,17 @@ const initialState = {
 function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_FILM_START:
+            console.log(`GET_FILM_START firing`)
             return {
                 ...state,
                 isFetching: true,
                 error: ''
             };
         case GET_FILM_SUCCESS:
+            console.log('success')
             return {
                 ...state,
+                isFetching: false,
                 film: action.payload,
                 error: ''
             }
@@ -35,5 +36,4 @@ function reducer(state = initialState, action) {
             return state;
     }
 }
-
 export default reducer
